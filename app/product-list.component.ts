@@ -3,8 +3,9 @@ import { Product } from './product';
 import { ProductService } from './product.service';
 
 @Component({
+    moduleId: module.id,
     selector: 'product-list',
-    templateUrl: 'app/product-list.component.html',
+    templateUrl: 'product-list.component.html',
     providers: [ ProductService ]
 })
 export class ProductListComponent implements OnInit {
