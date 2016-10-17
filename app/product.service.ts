@@ -7,7 +7,12 @@ import { PRODUCTS } from './mock-products';
 export class ProductService {
     constructor() { }
 
-    getProducts(): Product[] {
-        return PRODUCTS;
+    getProducts(): Promise<Product[]> {
+        return Promise.resolve(PRODUCTS);
+    }
+
+    getProduct(id: number): Promise<Product> {
+        return this.getProducts()
+                .then(products => products.find(product => product.id === id));
     }
 }

@@ -10,9 +10,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
+var forms_1 = require('@angular/forms');
 var router_1 = require('@angular/router');
 var app_component_1 = require('./app.component');
 var product_list_component_1 = require('./product-list.component');
+var product_detail_component_1 = require('./product-detail.component');
 var product_service_1 = require('./product.service');
 var AppModule = (function () {
     function AppModule() {
@@ -21,6 +23,7 @@ var AppModule = (function () {
         core_1.NgModule({
             imports: [
                 platform_browser_1.BrowserModule,
+                forms_1.FormsModule,
                 router_1.RouterModule.forRoot([
                     {
                         path: 'products',
@@ -30,12 +33,17 @@ var AppModule = (function () {
                         path: '',
                         redirectTo: '/products',
                         pathMatch: 'full'
+                    },
+                    {
+                        path: 'detail/:id',
+                        component: product_detail_component_1.ProductDetailComponent
                     }
                 ])
             ],
             declarations: [
                 app_component_1.AppComponent,
-                product_list_component_1.ProductListComponent
+                product_list_component_1.ProductListComponent,
+                product_detail_component_1.ProductDetailComponent
             ],
             providers: [
                 product_service_1.ProductService

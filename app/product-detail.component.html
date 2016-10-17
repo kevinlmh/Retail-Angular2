@@ -1,0 +1,11 @@
+<div *ngIf="product">
+    <button (click)="goBack()">Back</button>
+    <h2>{{product.title}}</h2>
+    <div>
+        <label>id: </label>{{product.id}}
+    </div>
+    <div>
+    <label>description: </label>
+    <input [(ngModel)]="product.description" placeholder="description"/>
+    </div>
+</div>

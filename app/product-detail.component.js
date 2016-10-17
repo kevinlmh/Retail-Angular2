@@ -10,30 +10,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
+var common_1 = require('@angular/common');
 var product_service_1 = require('./product.service');
-var ProductListComponent = (function () {
-    function ProductListComponent(productService, router) {
+var ProductDetailComponent = (function () {
+    function ProductDetailComponent(productService, route, location) {
         this.productService = productService;
-        this.router = router;
+        this.route = route;
+        this.location = location;
     }
-    ProductListComponent.prototype.ngOnInit = function () {
+    ProductDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.productService.getProducts().then(function (products) { return _this.products = products; });
+        this.route.params.forEach(function (params) {
+            var id = +params['id'];
+            _this.productService.getProduct(id).then(function (product) { return _this.product = product; });
+        });
     };
-    ProductListComponent.prototype.viewDetail = function (product) {
-        var link = ['/detail', product.id];
-        this.router.navigate(link);
+    ProductDetailComponent.prototype.goBack = function () {
+        this.location.back();
     };
-    ProductListComponent = __decorate([
+    ProductDetailComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            selector: 'product-list',
-            templateUrl: 'product-list.component.html',
-            providers: [product_service_1.ProductService]
+            selector: 'product-detail',
+            templateUrl: 'product-detail.component.html'
         }), 
-        __metadata('design:paramtypes', [product_service_1.ProductService, router_1.Router])
-    ], ProductListComponent);
-    return ProductListComponent;
+        __metadata('design:paramtypes', [product_service_1.ProductService, router_1.ActivatedRoute, common_1.Location])
+    ], ProductDetailComponent);
+    return ProductDetailComponent;
 }());
-exports.ProductListComponent = ProductListComponent;
-//# sourceMappingURL=product-list.component.js.map
+exports.ProductDetailComponent = ProductDetailComponent;
+//# sourceMappingURL=product-detail.component.js.map

@@ -1,5 +1,5 @@
 <ul>
-    <li *ngFor="let product of products">
+    <li *ngFor="let product of products" (click)="viewDetail(product)">
         {{ product.id }} - {{ product.title }}
     </li>
 </ul>
