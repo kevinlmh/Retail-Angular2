@@ -9,23 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var product_service_1 = require('./product.service');
-var ProductListComponent = (function () {
-    function ProductListComponent(productService) {
-        this.productService = productService;
+var mock_products_1 = require('./mock-products');
+var ProductService = (function () {
+    function ProductService() {
     }
-    ProductListComponent.prototype.ngOnInit = function () {
-        this.products = this.productService.getProducts();
+    ProductService.prototype.getProducts = function () {
+        return mock_products_1.PRODUCTS;
     };
-    ProductListComponent = __decorate([
-        core_1.Component({
-            selector: 'product-list',
-            templateUrl: 'app/product-list.component.html',
-            providers: [product_service_1.ProductService]
-        }), 
-        __metadata('design:paramtypes', [product_service_1.ProductService])
-    ], ProductListComponent);
-    return ProductListComponent;
+    ProductService = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [])
+    ], ProductService);
+    return ProductService;
 }());
-exports.ProductListComponent = ProductListComponent;
-//# sourceMappingURL=product-list.component.js.map
+exports.ProductService = ProductService;
+//# sourceMappingURL=product.service.js.map

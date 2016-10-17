@@ -1,24 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-
 import { Product } from './product';
+import { ProductService } from './product.service';
 
 @Component({
     selector: 'product-list',
-    templateUrl: 'app/product-list.component.html'
+    templateUrl: 'app/product-list.component.html',
+    providers: [ ProductService ]
 })
 export class ProductListComponent implements OnInit {
-    products = PRODUCTS;
-    constructor() { }
+    products: Product[];
+    constructor(private productService: ProductService) { }
 
-    ngOnInit() { }
+    ngOnInit() {
+        this.products = this.productService.getProducts();
+    }
 }
-
-// const PRODUCTS: Product[] = [
-//     { id: 1, title: 'product1' },
-//     { id: 2, title: 'product2' }
-// ];
-
-const PRODUCTS = [
-    { 'id': 1, 'title': 'product1' },
-    { 'id': 2, 'title': 'product2' }
-];
